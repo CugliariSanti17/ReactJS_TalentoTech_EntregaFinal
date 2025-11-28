@@ -1,16 +1,107 @@
-# React + Vite
+# 🛒 E-commerce de Camisetas de Fútbol — React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto desarrollado como trabajo final para el curso de **ReactJS – Talento Tech**.  
+El sitio funciona como un e-commerce completo donde el usuario puede navegar productos, filtrarlos, ver sus detalles, agregarlos al carrito y realizar la compra.  
+Además, incluye un **panel de administración (CRUD)** para gestionar los productos desde la misma aplicación.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologías utilizadas
 
-## React Compiler
+- **React**  
+- **Vite**  
+- **React Router DOM**  
+- **Context API**  
+- **Fetch API**  
+- **SweetAlert2**
+- **React-Tostify**  
+- **TailwindCSS** 
+- **Mock API**
+- **React Icons**
+- **React Document Data** (SEO)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📦 Funcionalidades principales
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🛍️ Catálogo
+- Listado completo de productos  
+- Filtrado por nombre  
+- Página de detalle con información ampliada  
+- Imágenes, descripciones y precios reales de camisetas
+
+### 🧺 Carrito de compras
+- Agregar productos
+- Modificar cantidades  
+- Eliminar productos individualmente  
+- Cálculo automático de:
+  - Subtotal  
+  - Total  
+  - Cantidades totales  
+
+### 🔧 Panel de administrador (CRUD)
+- Listado de productos
+- Crear nuevos productos  
+- Editar productos existentes  
+- Eliminar con confirmación mediante SweetAlert  
+- Filtrado por nombre
+
+### 📱 Diseño responsivo
+- Compatible con móviles, tablets y desktop  
+- Estética simple y moderna.
+
+---
+
+## 🗂️ Estructura del proyecto
+
+src/
+├── components/
+│ ├── Navbar.jsx
+│ ├── ProductCard.jsx
+│ ├── CartWidget.jsx
+│ └── ...
+├── pages/
+│ ├── Home.jsx
+│ ├── ProductoDetalle.jsx
+│ ├── Nosotros.jsx
+│ └── ...
+├── context/
+│ ├── CartContext.jsx
+│ ├── ProductsContext.jsx
+│ └── AuthContext.jsx
+├── App.jsx
+└── main.jsx
+
+---
+
+## ⚙️ Instalación y uso
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/usuario/ecommerce-react.git
+```
+
+### 2. Instalar dependencias
+```bash
+npm install
+```
+
+### 3. Iniciar el proyecto
+```bash
+npm run dev
+```
+---
+
+## 🎯 Objetivo del proyecto
+El objetivo es aplicar los conocimientos adquiridos en el curso de React, logrando un proyecto completo, funcional y cercano a un entorno real de trabajo, integrando frontend con API externa y administración de productos.
+
+---
+
+## 🧑‍💻 Autor
+Santiago Cugliari
+Desarrollador Web — React / JavaScript / Node / Express
+
+---
+
+## 📄 Licencia
+Este proyecto es de libre uso con fines educativos.
