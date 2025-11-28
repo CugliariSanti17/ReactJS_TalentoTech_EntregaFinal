@@ -54,6 +54,7 @@ Además, incluye un **panel de administración (CRUD)** para gestionar los produ
 
 ## 🗂️ Estructura del proyecto
 
+```
 src/
 ├── components/
 │ ├── Navbar.jsx
@@ -72,6 +73,7 @@ src/
 ├── App.jsx
 └── main.jsx
 
+```
 ---
 
 ## ⚙️ Instalación y uso
