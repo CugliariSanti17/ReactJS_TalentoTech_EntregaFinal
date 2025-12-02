@@ -30,95 +30,89 @@ const Productos = () => {
     if (productos.length === 0) return <Loader />
 
     return (
-        <div className="pb-24 md:pb-0 max-w-4xl mx-auto px-2">
-            <h1 className="text-2xl md:text-3xl font-bold text-[#ec7c6a] mb-6 md:mb-8 mt-2">
-                Productos
-            </h1>
+        <div className="pb-24 md:pb-0 ml-0 md:ml-28">
+            {/* centro general y máximo ancho */}
+            <div className="max-w-4xl mx-auto px-4">
 
-            /*Input de busqueda */
-            <div className="mb-6 md:mb-8 px-2">
-                <input
-                    type="text"
-                    placeholder="Buscar productos..."
-                    value={nombreBusqueda}
-                    onChange={(e) => setNombreBusqueda(e.target.value)}
-                    className="w-full bg-[#1F1D2B] text-gray-200 placeholder-gray-500 
-                  border border-[#262837] focus:border-[#ec7c6a] 
-                  outline-none rounded-xl px-3 py-2 
-                  shadow-sm md:shadow-md"
-                />
-            </div>
+                <h1 className="text-2xl md:text-3xl font-bold text-[#ec7c6a] mb-6 md:mb-8 mt-2 text-center">
+                    Productos
+                </h1>
 
-            <div className="mb-6 md:mb-8 px-2">
-                <select
-                    className="w-full bg-[#1F1D2B] text-gray-200 border border-[#262837] 
-                   rounded-xl px-3 py-2 outline-none focus:border-[#ec7c6a]"
-                    value={categoriaSeleccionada}
-                    onChange={(e) => setCategoriaSeleccionada(e.target.value)}
-                >
-                    {categorias.map((categoria) => (
-                        <option key={categoria} value={categoria}>
-                            {categoria.charAt(0).toUpperCase() + categoria.slice(1)}
-                        </option>
-                    ))}
-                </select>
-            </div>
+                {/* INPUT BUSQUEDA centrado */}
+                <div className="mb-6 md:mb-8 flex justify-center">
+                    <input
+                        type="text"
+                        placeholder="Buscar productos..."
+                        value={nombreBusqueda}
+                        onChange={(e) => setNombreBusqueda(e.target.value)}
+                        className="w-full max-w-md mx-auto bg-[#1F1D2B] text-gray-200 placeholder-gray-500 
+                     border border-[#262837] focus:border-[#ec7c6a] outline-none rounded-xl px-3 py-2 
+                     shadow-sm md:shadow-md"
+                    />
+                </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 px-2">
-                {productosAMostrar.map((producto) => (
-                    <div
-                        key={producto.id}
-                        className="bg-[#1F1D2B] rounded-xl p-3 md:p-4 shadow-md 
-                     hover:shadow-[#ec7c6a]/40 transition-all duration-300"
+                {/* SELECT CATEGORIAS centrado */}
+                <div className="mb-6 md:mb-8 flex justify-center">
+                    <select
+                        className="w-full max-w-md mx-auto bg-[#1F1D2B] text-gray-200 border border-[#262837] 
+                     rounded-xl px-3 py-2 outline-none focus:border-[#ec7c6a]"
+                        value={categoriaSeleccionada}
+                        onChange={(e) => setCategoriaSeleccionada(e.target.value)}
                     >
-                        <div className="text-center">
+                        {categorias.map((categoria) => (
+                            <option key={categoria} value={categoria}>
+                                {categoria.charAt(0).toUpperCase() + categoria.slice(1)}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-                            {/* Imagen más chica en mobile */}
-                            <div className="w-full h-40 md:h-48 bg-[#262837] rounded-xl overflow-hidden 
-                            flex items-center justify-center mb-3 md:mb-4">
-                                <img
-                                    src={producto.image}
-                                    alt={producto.title}
-                                    className="w-full h-full object-cover"
-                                />
+                {/* GRID: en mobile una columna centrada; cada card centrada con max-w */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                    {productosAMostrar.map((producto) => (
+                        <div
+                            key={producto.id}
+                            // centramos la card con mx-auto y limitamos su ancho para que quede centrada en mobile
+                            className="bg-[#1F1D2B] rounded-xl p-3 md:p-4 shadow-md hover:shadow-[#ec7c6a]/40 transition-all duration-300 mx-auto w-full max-w-md"
+                        >
+                            <div className="text-center">
+                                <div className="w-full h-40 md:h-48 bg-[#262837] rounded-xl overflow-hidden flex items-center justify-center mb-3 md:mb-4">
+                                    <img
+                                        src={producto.image}
+                                        alt={producto.title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+
+                                <h2 className="font-semibold text-base md:text-lg mb-1 md:mb-2">
+                                    {producto.title}
+                                </h2>
+
+                                <p className="text-gray-400 text-xs md:text-sm mb-1 md:mb-2 line-clamp-2">
+                                    {producto.description}
+                                </p>
+
+                                <p className="text-[#ec7c6a] font-bold text-lg md:text-xl mb-3 md:mb-4">
+                                    ${producto.price}
+                                </p>
+
+                                <Link
+                                    to={`producto/${producto.id}`}
+                                    className="block w-full bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-semibold py-2 rounded-lg text-sm md:text-base mb-2 transition-colors"
+                                >
+                                    Ver más detalles
+                                </Link>
+
+                                <button
+                                    className="w-full bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-semibold py-2 rounded-lg text-sm md:text-base transition-colors"
+                                    onClick={() => agregarCarrito(producto)}
+                                >
+                                    Agregar al carrito
+                                </button>
                             </div>
-
-                            {/* Título */}
-                            <h2 className="font-semibold text-base md:text-lg mb-1 md:mb-2">
-                                {producto.title}
-                            </h2>
-
-                            {/* Descripción compacta en mobile */}
-                            <p className="text-gray-400 text-xs md:text-sm mb-1 md:mb-2 line-clamp-2">
-                                {producto.description}
-                            </p>
-
-                            {/* Precio más destacado */}
-                            <p className="text-[#ec7c6a] font-bold text-lg md:text-xl mb-3 md:mb-4">
-                                ${producto.price}
-                            </p>
-
-                            {/* Botones adaptados */}
-                            <Link
-                                to={`producto/${producto.id}`}
-                                className="block w-full bg-[#ec7c6a] hover:bg-[#d86b5a] 
-                         text-white font-semibold py-2 rounded-lg 
-                         text-sm md:text-base mb-2 transition-colors"
-                            >
-                                Ver más detalles
-                            </Link>
-
-                            <button
-                                className="w-full bg-[#ec7c6a] hover:bg-[#d86b5a] 
-                         text-white font-semibold py-2 rounded-lg 
-                         text-sm md:text-base transition-colors"
-                                onClick={() => agregarCarrito(producto)}
-                            >
-                                Agregar al carrito
-                            </button>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     )
