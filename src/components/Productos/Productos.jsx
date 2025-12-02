@@ -30,14 +30,12 @@ const Productos = () => {
     if (productos.length === 0) return <Loader />
 
     return (
-        <div className="pb-24 md:pb-0">
-            {/* pb-24 = espacio inferior para que no quede debajo del navbar mobile */}
-
+        <div className="pb-24 md:pb-0 max-w-4xl mx-auto px-2">
             <h1 className="text-2xl md:text-3xl font-bold text-[#ec7c6a] mb-6 md:mb-8 mt-2">
                 Productos
             </h1>
 
-            {/* INPUT BUSQUEDA */}
+            /*Input de busqueda */
             <div className="mb-6 md:mb-8 px-2">
                 <input
                     type="text"
@@ -51,7 +49,6 @@ const Productos = () => {
                 />
             </div>
 
-            {/* SELECT CATEGORIAS */}
             <div className="mb-6 md:mb-8 px-2">
                 <select
                     className="w-full bg-[#1F1D2B] text-gray-200 border border-[#262837] 
@@ -67,7 +64,6 @@ const Productos = () => {
                 </select>
             </div>
 
-            {/* GRID MEJORADO MOBILE */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 px-2">
                 {productosAMostrar.map((producto) => (
                     <div
