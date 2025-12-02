@@ -14,7 +14,7 @@ const Productos = () => {
 
     const categorias = ["Todas", "Selecciones", "Europa", "Sudamerica", "Futbol argentino", "Brasileirao", "Serie A", "La liga", "Ligue one"]
 
-    const productosFiltrados = productos.filter((p) =>{
+    const productosFiltrados = productos.filter((p) => {
         return p.title.toLowerCase().includes(nombreBusqueda.toLowerCase())
     })
 
@@ -30,15 +30,32 @@ const Productos = () => {
     if (productos.length === 0) return <Loader />
 
     return (
-        <div>
-            <h1 className='text-3xl font-bold text-[#ec7c6a] mb-8'>Productos</h1>
-            
-            <div className="mb-8 flex justify-center">
-                <input type="text" placeholder="Buscar productos..." value={nombreBusqueda} onChange={(e) => setNombreBusqueda(e.target.value)} className="w-full max-w-md bg-[#1F1D2B] text-gray-200 placeholder-gray-500 border border-[#262837] focus:border-[#ec7c6a] outline-none rounded-xl px-4 py-2 transition-all duration-200 shadow-md"/>
+        <div className="pb-24 md:pb-0">
+            {/* pb-24 = espacio inferior para que no quede debajo del navbar mobile */}
+
+            <h1 className="text-2xl md:text-3xl font-bold text-[#ec7c6a] mb-6 md:mb-8 mt-2">
+                Productos
+            </h1>
+
+            {/* INPUT BUSQUEDA */}
+            <div className="mb-6 md:mb-8 px-2">
+                <input
+                    type="text"
+                    placeholder="Buscar productos..."
+                    value={nombreBusqueda}
+                    onChange={(e) => setNombreBusqueda(e.target.value)}
+                    className="w-full bg-[#1F1D2B] text-gray-200 placeholder-gray-500 
+                  border border-[#262837] focus:border-[#ec7c6a] 
+                  outline-none rounded-xl px-3 py-2 
+                  shadow-sm md:shadow-md"
+                />
             </div>
 
-            <div className="mb-8 flex justify-center">
-                <select className="w-full max-w-md bg-[#1F1D2B] text-gray-200 border border-[#262837] rounded-xl px-4 py-2 outline-none focus:border-[#ec7c6a] transition-all"
+            {/* SELECT CATEGORIAS */}
+            <div className="mb-6 md:mb-8 px-2">
+                <select
+                    className="w-full bg-[#1F1D2B] text-gray-200 border border-[#262837] 
+                   rounded-xl px-3 py-2 outline-none focus:border-[#ec7c6a]"
                     value={categoriaSeleccionada}
                     onChange={(e) => setCategoriaSeleccionada(e.target.value)}
                 >
@@ -49,24 +66,63 @@ const Productos = () => {
                     ))}
                 </select>
             </div>
-        
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                {productosAMostrar.map((producto) => {
-                    return (
-                        <div className='bg-[#1F1D2B] rounded-2xl p-4 shadow-lg hover:shadow-[#ec7c6a]/40 transition-all duration-300'>
-                            <div className='text-center'>
-                                <div className="w-full h-48 bg-[#262837] rounded-xl overflow-hidden flex items-center justify-center mb-4">
-                                    <img src={producto.image} alt={producto.title} className='w-full h-full object-cover'/>
-                                </div>
-                                <h2 className='font-semibold text-lg mb-2'>{producto.title}</h2>
-                                <p className='text-gray-400 text-sm mb-2 line-clamp-2'>{producto.description}</p>
-                                <p className='text-[#ec7c6a] font-bold mb-4'>${producto.price}</p>
-                                <Link to={`producto/${producto.id}`} className='inline-block bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-semibold py-2 px-4 rounded-xl transition-colors duration-200'>Ver más detalles</Link>
-                                <button className="mt-4 w-full bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-semibold py-2 rounded-xl transition-colors" onClick={() => agregarCarrito(producto)}>Agregar al carrito</button>
+
+            {/* GRID MEJORADO MOBILE */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 px-2">
+                {productosAMostrar.map((producto) => (
+                    <div
+                        key={producto.id}
+                        className="bg-[#1F1D2B] rounded-xl p-3 md:p-4 shadow-md 
+                     hover:shadow-[#ec7c6a]/40 transition-all duration-300"
+                    >
+                        <div className="text-center">
+
+                            {/* Imagen más chica en mobile */}
+                            <div className="w-full h-40 md:h-48 bg-[#262837] rounded-xl overflow-hidden 
+                            flex items-center justify-center mb-3 md:mb-4">
+                                <img
+                                    src={producto.image}
+                                    alt={producto.title}
+                                    className="w-full h-full object-cover"
+                                />
                             </div>
+
+                            {/* Título */}
+                            <h2 className="font-semibold text-base md:text-lg mb-1 md:mb-2">
+                                {producto.title}
+                            </h2>
+
+                            {/* Descripción compacta en mobile */}
+                            <p className="text-gray-400 text-xs md:text-sm mb-1 md:mb-2 line-clamp-2">
+                                {producto.description}
+                            </p>
+
+                            {/* Precio más destacado */}
+                            <p className="text-[#ec7c6a] font-bold text-lg md:text-xl mb-3 md:mb-4">
+                                ${producto.price}
+                            </p>
+
+                            {/* Botones adaptados */}
+                            <Link
+                                to={`producto/${producto.id}`}
+                                className="block w-full bg-[#ec7c6a] hover:bg-[#d86b5a] 
+                         text-white font-semibold py-2 rounded-lg 
+                         text-sm md:text-base mb-2 transition-colors"
+                            >
+                                Ver más detalles
+                            </Link>
+
+                            <button
+                                className="w-full bg-[#ec7c6a] hover:bg-[#d86b5a] 
+                         text-white font-semibold py-2 rounded-lg 
+                         text-sm md:text-base transition-colors"
+                                onClick={() => agregarCarrito(producto)}
+                            >
+                                Agregar al carrito
+                            </button>
                         </div>
-                    )
-                })}
+                    </div>
+                ))}
             </div>
         </div>
     )
