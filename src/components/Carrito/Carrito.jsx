@@ -30,43 +30,45 @@ const Carrito = () => {
             actualizarCantidad(indice, nuevaCantidad)
         }
     }
-    return (
-        <div className='ml-28 min-h-screen bg-[#252836] text-gray-200 p-8'>
 
-            <h3 className="text-2xl font-semibold text-[#ec7c6a] mb-6">
+    return (
+        <div className="min-h-screen bg-[#252836] text-gray-200 p-8 ml-0 sm:ml-28">
+
+            <h3 className="text-2xl font-semibold text-[#ec7c6a] mb-6 text-center sm:text-left">
                 Carrito
             </h3>
 
             {carrito.length > 0 ? (
                 <>
-                    <button
-                        onClick={vaciarCarrito}
-                        className="mb-6 bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-medium px-4 py-2 rounded-xl transition-colors"
-                    >
-                        Vaciar carrito
-                    </button>
+                    <div className="flex justify-center sm:justify-start">
+                        <button
+                            onClick={vaciarCarrito}
+                            className="mb-6 bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-medium px-4 py-2 rounded-xl transition-colors"
+                        >
+                            Vaciar carrito
+                        </button>
+                    </div>
 
                     <div className="space-y-4">
 
                         {carrito.map((item, index) => (
                             <div
                                 key={index}
-                                className="bg-[#1F1D2B] p-4 rounded-xl shadow-md flex justify-between items-center"
+                                className="bg-[#1F1D2B] p-4 rounded-xl shadow-md 
+                       flex flex-col sm:flex-row justify-between items-center gap-4
+                       mx-auto sm:mx-0 w-full max-w-sm sm:max-w-none"
                             >
                                 {/* INFO IZQUIERDA */}
-                                <div className="flex items-center gap-4">
-
+                                <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
                                     <img
                                         src={item.image}
                                         alt={item.title}
                                         className="w-16 h-16 object-contain bg-[#262837] p-2 rounded-lg"
                                     />
 
-                                    <div>
+                                    <div className="text-center sm:text-left">
                                         <p className="font-semibold text-white">{item.title}</p>
-                                        <p className="text-sm text-gray-400">
-                                            Precio unitario: ${item.price}
-                                        </p>
+                                        <p className="text-sm text-gray-400">Precio unitario: ${item.price}</p>
                                         <p className="text-sm text-gray-300 font-semibold">
                                             Subtotal: ${item.price * item.cantidad}
                                         </p>
@@ -74,7 +76,7 @@ const Carrito = () => {
                                 </div>
 
                                 {/* CONTROLES DERECHA */}
-                                <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-4 justify-center sm:justify-start">
 
                                     {/* BOTONES DE CANTIDAD */}
                                     <div className="flex items-center bg-[#262837] rounded-lg">
@@ -99,58 +101,50 @@ const Carrito = () => {
 
                                     {/* ELIMINAR */}
                                     <button
-                                        onClick={() => eliminarCarrito(index)}
+                                        onClick={() => eliminarCarrito(item.id)}
                                         className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm transition-colors"
                                     >
                                         X
                                     </button>
 
                                 </div>
-
                             </div>
                         ))}
 
                         {/* RESUMEN DE COMPRA */}
-                        <div className="bg-[#1F1D2B] p-5 rounded-xl shadow-md mt-8">
-                            <h3 className="text-xl font-semibold text-[#ec7c6a] mb-4">
+                        <div className="bg-[#1F1D2B] p-5 rounded-xl shadow-md mt-8 
+                        w-full max-w-sm sm:max-w-none mx-auto sm:mx-0">
+                            <h3 className="text-xl font-semibold text-[#ec7c6a] mb-4 text-center sm:text-left">
                                 Resumen de compra
                             </h3>
 
                             <div className="space-y-2 text-lg">
                                 <p className="flex justify-between">
                                     <span className="text-gray-300">Subtotal</span>
-                                    <span className="font-semibold">
-                                        ${subtotal}
-                                    </span>
+                                    <span className="font-semibold">${subtotal}</span>
                                 </p>
 
                                 <p className="flex justify-between">
                                     <span className="text-gray-300">Envío</span>
                                     {envio === 0 ? (
-                                        <span className="font-semibold text-green-300">
-                                            ¡Envío Gratis!
-                                        </span>
+                                        <span className="font-semibold text-green-300">¡Envío Gratis!</span>
                                     ) : (
-                                            <span className="font-semibold text-green-300">
-                                                ${envio}
-                                            </span>
-                                        )}
+                                        <span className="font-semibold text-green-300">${envio}</span>
+                                    )}
                                 </p>
 
                                 <hr className="border-[#2e2f3b] my-3" />
 
                                 <p className="flex justify-between text-xl font-bold">
                                     <span>Total</span>
-                                    <span className="text-[#ec7c6a]">
-                                        ${total}
-                                    </span>
+                                    <span className="text-[#ec7c6a]">${total}</span>
                                 </p>
                             </div>
 
                             <button
                                 onClick={() => alert("Checkout simulado")}
                                 className="mt-6 w-full bg-[#ec7c6a] hover:bg-[#d86b5a] 
-                            text-white font-semibold py-3 rounded-xl transition-colors"
+                       text-white font-semibold py-3 rounded-xl transition-colors"
                             >
                                 Confirmar compra
                             </button>
@@ -159,7 +153,7 @@ const Carrito = () => {
 
                 </>
             ) : (
-                <p className="text-gray-400 italic">El carrito está vacío.</p>
+                <p className="text-gray-400 italic text-center sm:text-left">El carrito está vacío.</p>
             )}
 
         </div>
