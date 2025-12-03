@@ -53,7 +53,7 @@ const AdminPage = () => {
   }
 
   return (
-    <div className="ml-28 min-h-screen bg-[#252836] text-gray-200 p-8">
+    <div className="min-h-screen bg-[#252836] text-gray-200 p-8 ml-0 sm:ml-28">
       <Meta {...meta}/>
       <header className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-[#ec7c6a]">Admin Dashboard</h1>
