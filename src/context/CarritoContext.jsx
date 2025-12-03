@@ -8,7 +8,22 @@ export const CarritoProvider = ({children}) =>{
     const [carrito, setCarrito] = useState([])
     
     const agregarCarrito = (producto) =>{
-        setCarrito([...carrito, producto])
+        const productoExistente = carrito.findIndex(item => item.id === producto.id)
+
+        if(productoExistente != -1) {
+            const nuevoCarrito = [...carrito]
+            const cantidadActual = nuevoCarrito[productoExistente].cantidad || 1
+
+            nuevoCarrito[productoExistente] = {
+                ...nuevoCarrito[productoExistente],
+                cantidad: cantidadActual + 1
+            }
+
+            setCarrito(nuevoCarrito)
+        }else{
+            setCarrito([...carrito, {...producto, cantidad: 1}])
+        }
+
         toast.success(`${producto.title} ha sido agregado al carrito`, {
             position: "top-right",
             autoClose: 2500,
@@ -21,6 +36,13 @@ export const CarritoProvider = ({children}) =>{
             transition: Bounce,
         });
     } 
+
+    const actualizarCantidad = (indice, nuevaCantidad) =>{
+        const nuevoCarrito = [...carrito]
+
+        nuevoCarrito[indice] = {...nuevoCarrito[indice], cantidad: nuevaCantidad}
+        setCarrito(nuevoCarrito) 
+    }
 
     const eliminarCarrito = (idProducto) =>{
         const nuevoCarrito = carrito.filter((producto) => producto.id !== idProducto)
@@ -35,7 +57,7 @@ export const CarritoProvider = ({children}) =>{
     const cantidadTotal = carrito.length
 
     return(
-        <CarritoContext.Provider value={{carrito, cantidadTotal, agregarCarrito, vaciarCarrito, eliminarCarrito}}>
+        <CarritoContext.Provider value={{carrito, cantidadTotal, agregarCarrito, actualizarCantidad, vaciarCarrito, eliminarCarrito}}>
             {children}
         </CarritoContext.Provider>
     )
