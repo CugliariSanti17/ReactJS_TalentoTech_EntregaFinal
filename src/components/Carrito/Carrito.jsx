@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { CarritoContext } from "../../context/CarritoContext.jsx"
+import Meta from 'react-document-meta'
 
 const Carrito = () => {
     const { carrito, eliminarCarrito, vaciarCarrito, actualizarCantidad } = useContext(CarritoContext)
@@ -31,8 +32,20 @@ const Carrito = () => {
         }
     }
 
+    const meta = {
+        title: "Carrito | Mi tienda",
+        description: "Carrito de compra donde se almacenan los productos seleccionados para la compra",
+        meta: {
+            charset: "utf-8",
+            name: {
+                keywords: "producto, camisetas, futbol, remeras, equipos, argentina, europa, tienda, ecommerce, carrito, comprar, pago"
+            }
+        }
+    }
+
     return (
         <div className="min-h-screen bg-[#252836] text-gray-200 p-8 ml-0 sm:ml-28">
+            <Meta {...meta}/>
 
             <h3 className="text-2xl font-semibold text-[#ec7c6a] mb-6 text-center sm:text-left">
                 Carrito
