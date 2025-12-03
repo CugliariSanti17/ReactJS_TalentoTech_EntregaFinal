@@ -8,7 +8,7 @@ import Meta from 'react-document-meta'
 const DetalleProducto = () => {
 
   const meta = {
-     title: "Detalle producto | Mi tienda",
+    title: "Detalle producto | Mi tienda",
     description: "Explora el detalle de nuestros productos.",
     meta: {
       charset: "utf-8",

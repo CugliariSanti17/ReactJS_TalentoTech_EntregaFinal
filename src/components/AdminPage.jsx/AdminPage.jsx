@@ -2,6 +2,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ProductosContext } from "../../context/ProductosContext.jsx";
 import FormProducto from "../FormProducto/FormProducto.jsx";
+import Meta from 'react-document-meta'
 
 
 const AdminPage = () => {
@@ -40,8 +41,20 @@ const AdminPage = () => {
 
     const productosAMostrar = nombreBusqueda.trim() === '' ? productos: productosFiltrados
 
+    const meta = {
+      title: "Panel de administración| Mi tienda",
+      description: "Panel de admistracion para el control de los productos.",
+      meta: {
+        charset: "utf-8",
+        name: {
+          keywords: "producto, camisetas, futbol, remeras, equipos, argentina, europa, tienda, ecommerce, agregar, eliminar, editar, gestion, admin"
+        }
+      }
+  }
+
   return (
     <div className="ml-28 min-h-screen bg-[#252836] text-gray-200 p-8">
+      <Meta {...meta}/>
       <header className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-[#ec7c6a]">Admin Dashboard</h1>
 
