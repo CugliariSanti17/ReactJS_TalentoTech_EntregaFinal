@@ -89,7 +89,6 @@ const AdminPage = () => {
         </div>
       </section>
 
-      {/* Tabla / Grid de productos (sin filtros) */}
       <section>
         <div className="overflow-x-auto">
           <div className="mb-8 flex justify-center">
@@ -118,15 +117,13 @@ const AdminPage = () => {
                 productosAMostrar.map((p, i) => (
                   <tr key={p.id} className="odd:bg-[#1F1D2B] even:bg-[#262837]">
                     <td className="px-4 py-4 align-top text-sm text-gray-300">{i + 1}</td>
-
-                    {/* imagen */}
+                  
                     <td className="px-4 py-4 align-top">
                       <div className="w-16 h-16 bg-[#262837] rounded-lg p-2 flex items-center justify-center">
                         <img src={p.image} alt={p.title} className="max-w-full max-h-full object-contain" />
                       </div>
                     </td>
 
-                    {/* title + desc breve */}
                     <td className="px-4 py-4 align-top">
                       <div className="max-w-xs">
                         <p className="font-semibold text-white truncate">{p.title}</p>
@@ -140,7 +137,6 @@ const AdminPage = () => {
                       {p.category || "-"}
                     </td>
 
-                    {/* acciones: Agregar / Editar / Eliminar (sin funcionalidad) */}
                     <td className="px-4 py-4 align-top">
                       <div className="flex gap-2">
                         <button className="px-3 py-1 bg-[#ec7c6a] text-white rounded-lg text-sm hover:bg-[#d86b5a] transition-colors" onClick={() => abrirFormularioEditar(p)}>
@@ -169,7 +165,6 @@ const AdminPage = () => {
 
         </div>
 
-        {/* footer simple informativo */}
         <div className="mt-6 flex items-center justify-between gap-4">
           <div className="text-sm text-gray-400">
             Mostrando <span className="text-white font-medium">

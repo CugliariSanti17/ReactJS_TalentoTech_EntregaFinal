@@ -4,7 +4,7 @@ import  Meta  from "react-document-meta"
 const Index = () => {
 
   const meta = {
-     title: "Inicio | Mi tienda",
+    title: "Inicio | Mi tienda",
     description: "Explora nuestra variedad de productos.",
     meta: {
       charset: "utf-8",

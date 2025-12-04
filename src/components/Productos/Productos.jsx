@@ -10,9 +10,9 @@ const Productos = () => {
     const { agregarCarrito } = useContext(CarritoContext)
 
     const [nombreBusqueda, setNombreBusqueda] = useState("")
-    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos')
+    //const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos')
 
-    const categorias = ["Todas", "Selecciones", "Europa", "Sudamerica", "Futbol argentino", "Brasileirao", "Serie A", "La liga", "Ligue one"]
+    //const categorias = ["Todas", "Selecciones", "Europa", "Sudamerica", "Futbol argentino", "Brasileirao", "Serie A", "La liga", "Ligue one"]
 
     const productosFiltrados = productos.filter((p) => {
         return p.title.toLowerCase().includes(nombreBusqueda.toLowerCase())
@@ -36,14 +36,9 @@ const Productos = () => {
             </h1>
 
             <div className="mb-8 flex justify-center">
-                <input
-                    type="text"
-                    placeholder="Buscar productos..."
-                    value={nombreBusqueda}
-                    onChange={(e) => setNombreBusqueda(e.target.value)}
-                    className="w-full max-w-md bg-[#1F1D2B] text-gray-200 placeholder-gray-500 border border-[#262837]
-                   focus:border-[#ec7c6a] outline-none rounded-xl px-4 py-2 transition-all duration-200 shadow-md mx-auto"
-                />
+                <input type="text" placeholder="Buscar productos..." value={nombreBusqueda} onChange={(e) => setNombreBusqueda(e.target.value)}
+                className="w-full max-w-md bg-[#1F1D2B] text-gray-200 placeholder-gray-500 border border-[#262837]
+                   focus:border-[#ec7c6a] outline-none rounded-xl px-4 py-2 transition-all duration-200 shadow-md mx-auto"/>
             </div>
 
            {/* <div className="mb-8 flex justify-center">

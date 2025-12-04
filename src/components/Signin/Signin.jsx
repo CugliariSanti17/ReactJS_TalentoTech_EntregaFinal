@@ -90,21 +90,14 @@ const Signin = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-[#ec7c6a] hover:bg-[#f38c79] transition-colors 
-                   text-white font-semibold py-3 rounded-lg shadow-md"
-          >
+          <button type="submit" className="w-full bg-[#ec7c6a] hover:bg-[#f38c79] transition-colors text-white font-semibold py-3 rounded-lg shadow-md">
             Ingresar
           </button>
         </form>
 
         <p className="text-sm text-gray-400 text-center mt-6">
           ¿No tenés cuenta?{" "}
-          <a
-            href="#"
-            className="text-[#ec7c6a] hover:underline hover:text-[#f38c79]"
-          >
+          <a href="#" className="text-[#ec7c6a] hover:underline hover:text-[#f38c79]">
             Registrate
           </a>
         </p>

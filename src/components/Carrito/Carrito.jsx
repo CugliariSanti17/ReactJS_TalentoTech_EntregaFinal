@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { CarritoContext } from "../../context/CarritoContext.jsx"
 import Meta from 'react-document-meta'
+import Swal from 'sweetalert2';
 
 const Carrito = () => {
     const { carrito, eliminarCarrito, vaciarCarrito, actualizarCantidad } = useContext(CarritoContext)
@@ -30,6 +31,19 @@ const Carrito = () => {
         } else {
             actualizarCantidad(indice, nuevaCantidad)
         }
+    }
+
+    const simularCheckout = () =>{
+        Swal.fire({
+            title: "Checkout Simulado",
+            text: "¡Gracias por tu compra!",
+            icon: "succes",
+            confirmButtonColor: '#32871bff',
+            background: '#262837',
+            color: '#fff'
+        });
+
+        vaciarCarrito()
     }
 
     const meta = {
@@ -65,13 +79,8 @@ const Carrito = () => {
                     <div className="space-y-4">
 
                         {carrito.map((item, index) => (
-                            <div
-                                key={index}
-                                className="bg-[#1F1D2B] p-4 rounded-xl shadow-md 
-                       flex flex-col sm:flex-row justify-between items-center gap-4
-                       mx-auto sm:mx-0 w-full max-w-sm sm:max-w-none"
+                            <div key={index} className="bg-[#1F1D2B] p-4 rounded-xl shadow-md  flex flex-col sm:flex-row justify-between items-center gap-4 mx-auto sm:mx-0 w-full max-w-sm sm:max-w-none"
                             >
-                                {/* INFO IZQUIERDA */}
                                 <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
                                     <img
                                         src={item.image}
@@ -88,10 +97,8 @@ const Carrito = () => {
                                     </div>
                                 </div>
 
-                                {/* CONTROLES DERECHA */}
                                 <div className="flex items-center gap-4 justify-center sm:justify-start">
 
-                                    {/* BOTONES DE CANTIDAD */}
                                     <div className="flex items-center bg-[#262837] rounded-lg">
                                         <button
                                             onClick={() => manejarCantidad(index, "decrementar")}
@@ -112,7 +119,6 @@ const Carrito = () => {
                                         </button>
                                     </div>
 
-                                    {/* ELIMINAR */}
                                     <button
                                         onClick={() => eliminarCarrito(item.id)}
                                         className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm transition-colors"
@@ -124,7 +130,6 @@ const Carrito = () => {
                             </div>
                         ))}
 
-                        {/* RESUMEN DE COMPRA */}
                         <div className="bg-[#1F1D2B] p-5 rounded-xl shadow-md mt-8 
                         w-full max-w-sm sm:max-w-none mx-auto sm:mx-0">
                             <h3 className="text-xl font-semibold text-[#ec7c6a] mb-4 text-center sm:text-left">
@@ -155,7 +160,7 @@ const Carrito = () => {
                             </div>
 
                             <button
-                                onClick={() => alert("Checkout simulado")}
+                                onClick={() => simularCheckout()}
                                 className="mt-6 w-full bg-[#ec7c6a] hover:bg-[#d86b5a] 
                        text-white font-semibold py-3 rounded-xl transition-colors"
                             >

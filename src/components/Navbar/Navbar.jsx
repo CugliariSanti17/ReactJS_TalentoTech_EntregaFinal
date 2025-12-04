@@ -39,7 +39,7 @@ const Navbar = () => {
   
   return (
     <>
-      {/* SIDEBAR - SOLO DESKTOP */}
+      {/* NAVBAR VISTA ESCRITORIO */}
       <nav className="bg-[#1F1D2B] fixed left-0 top-0 w-28 h-full hidden md:block">
         <ul className="pl-4 h-full flex flex-col">
           <li>
@@ -76,7 +76,7 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      {/* NAVBAR INFERIOR - SOLO MOBILE */}
+          {/* NAVBAR VISTA MOBILE*/}
       <nav className="md:hidden bg-[#1F1D2B] fixed bottom-0 left-0 w-full h-16 flex justify-around items-center shadow-xl border-t border-[#262837]">
         {links.map((link) => (
           <NavLink
@@ -94,7 +94,6 @@ const Navbar = () => {
           </NavLink>
         ))}
 
-        {/* LOGOUT */}
         <button
           onClick={logout}
           className="flex flex-col items-center text-xl text-gray-300 hover:text-[#ec7c6a]"
