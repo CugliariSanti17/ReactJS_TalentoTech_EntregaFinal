@@ -7,7 +7,7 @@ import Meta from 'react-document-meta'
 
 const AdminPage = () => {
 
-  const {getAllProducts, productos, eliminarProducto} = useContext(ProductosContext)
+  const {getAllProducts, productos, eliminarProducto, error} = useContext(ProductosContext)
 
   const [mostrarForm, setMostrarForm] = useState(false)
   const [productoSeleccionado, setProductoSeleccionado] = useState(null)
@@ -51,6 +51,8 @@ const AdminPage = () => {
         }
       }
   }
+
+  if (error) return <p>{error}</p>
 
   return (
     <div className="min-h-screen bg-[#252836] text-gray-200 p-8 ml-0 sm:ml-28">

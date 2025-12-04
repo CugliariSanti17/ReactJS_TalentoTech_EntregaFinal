@@ -3,32 +3,12 @@ import { ProductosContext } from '../../context/ProductosContext'
 
 const FormProducto = ({ productoInicial = {}, modo = 'agregar', onCerrar }) => {
 
-  const [errores, setErrores] = useState({})
   const [productoAEditar, setProductoAEditar] = useState(productoInicial)
   const { agregarProducto, editarProducto } = useContext(ProductosContext)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setProductoAEditar({ ...productoAEditar, [name]: value })
-  }
-
-  const validarForm = () => {
-    const nuevosErrores = {}
-
-    if (!producto.price || producto.price < 0) {
-      nuevosErrores.price = 'El precio debe ser mayor a 0'
-    }
-
-    if (!producto.image.trim() || producto.image.length < 6) {
-      nuevosErrores.image = 'La URL de la imagen debe tener más de 6 carácteres'
-    }
-
-    if (producto.description.trim() || producto.description.length < 10) {
-      nuevosErrores.description = 'La descripción debe tener al menos 10 carácteres'
-    }
-
-    setErrores(nuevosErrores)
-    return Object.keys(nuevosErrores).length === 0
   }
 
   const handleSubmit = async (e) => {
