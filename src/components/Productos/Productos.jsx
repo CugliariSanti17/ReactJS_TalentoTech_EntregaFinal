@@ -31,12 +31,10 @@ const Productos = () => {
 
     return (
         <div className="px-4">
-            {/* Título: centrado en mobile, alineado a la izquierda en sm+ */}
             <h1 className="text-3xl font-bold text-[#ec7c6a] mb-8 text-center sm:text-left">
                 Productos
             </h1>
 
-            {/* Input: ya centrado en mobile por el contenedor, limita ancho con max-w-md */}
             <div className="mb-8 flex justify-center">
                 <input
                     type="text"
@@ -48,8 +46,7 @@ const Productos = () => {
                 />
             </div>
 
-            {/* Select: centrado en mobile */}
-            <div className="mb-8 flex justify-center">
+           {/* <div className="mb-8 flex justify-center">
                 <select
                     className="w-full max-w-md bg-[#1F1D2B] text-gray-200 border border-[#262837] rounded-xl px-4 py-2 outline-none
                    focus:border-[#ec7c6a] transition-all mx-auto"
@@ -62,9 +59,8 @@ const Productos = () => {
                         </option>
                     ))}
                 </select>
-            </div>
+            </div> */} 
 
-            {/* Grid: una columna en mobile con items centrados; en sm+ mantiene la grilla original */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center sm:place-items-stretch">
                 {productosAMostrar.map((producto) => (
                     <div
