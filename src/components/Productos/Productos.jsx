@@ -74,7 +74,7 @@ const Productos = () => {
 
                             <Link
                                 to={`/producto/${producto.id}`}
-                                className="inline-block bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-semibold py-2 px-4 rounded-xl transition-colors duration-200"
+                                className="block bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-semibold py-2 px-4 rounded-xl transition-colors duration-200 text-center"
                             >
                                 Ver más detalles
                             </Link>

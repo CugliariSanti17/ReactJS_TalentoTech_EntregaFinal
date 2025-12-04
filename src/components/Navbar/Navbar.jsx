@@ -8,6 +8,7 @@ import { RiAdminLine } from "react-icons/ri";
 import { useContext } from 'react';
 import { CarritoContext } from '../../context/CarritoContext.jsx';
 import { AuthContext } from '../../context/AuthContext.jsx';
+import { LiaBuyNLarge } from 'react-icons/lia';
 
 
 const Navbar = () => {
@@ -44,7 +45,7 @@ const Navbar = () => {
         <ul className="pl-4 h-full flex flex-col">
           <li>
             <h1 className="text-2xl text-gray-300 uppercase font-bold text-center my-5">
-              Logo
+              <NavLink to={"/"}>Logo</NavLink>
             </h1>
           </li>
 
