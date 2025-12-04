@@ -141,9 +141,6 @@ const AdminPage = () => {
                     {/* acciones: Agregar / Editar / Eliminar (sin funcionalidad) */}
                     <td className="px-4 py-4 align-top">
                       <div className="flex gap-2">
-                        <button className="px-3 py-1 bg-[#1F1D2B] border border-[#3b3b4f] text-[#ec7c6a] rounded-lg text-sm hover:bg-[#262837] transition-colors" onClick={abrirFormularioAgregar}>
-                          Agregar
-                        </button>
                         <button className="px-3 py-1 bg-[#ec7c6a] text-white rounded-lg text-sm hover:bg-[#d86b5a] transition-colors" onClick={() => abrirFormularioEditar(p)}>
                           Editar
                         </button>
@@ -173,7 +170,8 @@ const AdminPage = () => {
         {/* footer simple informativo */}
         <div className="mt-6 flex items-center justify-between gap-4">
           <div className="text-sm text-gray-400">
-            Mostrando <span className="text-white font-medium">{productos.length}</span> productos.
+            Mostrando <span className="text-white font-medium">
+              {productosAMostrar.length}</span> productos.
           </div>
           <div>
             <button className="bg-[#1F1D2B] border border-[#3b3b4f] px-4 py-2 rounded-xl text-[#ec7c6a] hover:bg-[#262837] transition-colors">
