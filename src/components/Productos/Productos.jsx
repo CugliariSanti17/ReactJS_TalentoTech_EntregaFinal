@@ -10,15 +10,19 @@ const Productos = () => {
     const { agregarCarrito } = useContext(CarritoContext)
 
     const [nombreBusqueda, setNombreBusqueda] = useState("")
-    //const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos')
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todas')
 
-    //const categorias = ["Todas", "Selecciones", "Europa", "Sudamerica", "Futbol argentino", "Brasileirao", "Serie A", "La liga", "Ligue one"]
+    const categorias = ["Todas", "Selecciones", "Europa", "Sudamerica", "Futbol argentino", "Brasileirao", "Serie A", "La liga", "Ligue one"]
 
-    const productosFiltrados = productos.filter((p) => {
+    const productosFiltradosPorNombre = productos.filter((p) => {
         return p.title.toLowerCase().includes(nombreBusqueda.toLowerCase())
     })
 
-    const productosAMostrar = nombreBusqueda.trim() === '' ? productos : productosFiltrados
+    const productosFiltradosPorCategoria = productosFiltradosPorNombre.filter(p =>
+        categoriaSeleccionada.toLowerCase() === 'todas' ? true : p.category.some(cat => cat.toLowerCase() === categoriaSeleccionada.toLowerCase())
+    )   
+
+    const productosAMostrar = productosFiltradosPorCategoria
 
 
     useEffect(() => {
@@ -41,7 +45,7 @@ const Productos = () => {
                    focus:border-[#ec7c6a] outline-none rounded-xl px-4 py-2 transition-all duration-200 shadow-md mx-auto"/>
             </div>
 
-           {/* <div className="mb-8 flex justify-center">
+            <div className="mb-8 flex justify-center">
                 <select
                     className="w-full max-w-md bg-[#1F1D2B] text-gray-200 border border-[#262837] rounded-xl px-4 py-2 outline-none
                    focus:border-[#ec7c6a] transition-all mx-auto"
@@ -54,7 +58,7 @@ const Productos = () => {
                         </option>
                     ))}
                 </select>
-            </div> */} 
+            </div> 
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center sm:place-items-stretch">
                 {productosAMostrar.map((producto) => (
