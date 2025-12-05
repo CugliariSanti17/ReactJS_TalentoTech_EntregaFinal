@@ -5,11 +5,27 @@ const FormProducto = ({ productoInicial = {}, modo = 'agregar', onCerrar }) => {
 
   const [productoAEditar, setProductoAEditar] = useState(productoInicial)
   const { agregarProducto, editarProducto } = useContext(ProductosContext)
+  const [categoriaSeleccionada1, setCategoriaSeleccionada1] = useState(productoInicial.category?.[0] || "Selecciones")
+  const [categoriaSeleccionada2, setCategoriaSeleccionada2] = useState(productoInicial.category?.[1] || "Selecciones")
+
+  const categorias = ["Selecciones", "Europa", "Sudamerica", "Liga argentina", "Brasileirao", "Serie A", "La liga", "Ligue one"]
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setProductoAEditar({ ...productoAEditar, [name]: value })
+    setProductoAEditar({ ...productoAEditar, [name]: value})
   }
+
+  const handleSelect = (e, tipo) => {
+    if (tipo === "cat1") {
+      setCategoriaSeleccionada1(e.target.value)
+      setProductoAEditar({...productoAEditar, category: [e.target.value, categoriaSeleccionada2]})
+    }
+
+    if (tipo === "cat2") {
+      setCategoriaSeleccionada2(e.target.value)
+      setProductoAEditar({...productoAEditar, category: [categoriaSeleccionada1, e.target.value]})
+    }
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -90,6 +106,40 @@ const FormProducto = ({ productoInicial = {}, modo = 'agregar', onCerrar }) => {
                 value={productoAEditar.image || ""}
                 onChange={handleChange}
               />
+            </div>
+
+            <div>
+              <label className="block text-sm text-gray-300">Categoria 1:</label>
+              <select
+                    className="w-full max-w-md bg-[#1F1D2B] text-gray-200 border border-[#262837] rounded-xl px-4 py-2 outline-none
+                   focus:border-[#ec7c6a] transition-all mx-auto"
+                    value={categoriaSeleccionada1}
+                    onChange={(e) => handleSelect(e, 'cat1')}
+                    required
+                >
+                    {categorias.map((categoria) => (
+                        <option key={categoria} value={categoria}>
+                            {categoria.charAt(0).toUpperCase() + categoria.slice(1)}
+                        </option>
+                    ))}
+              </select>
+            </div>
+
+             <div>
+              <label className="block text-sm text-gray-300">Categoria 2:</label>
+              <select
+                    className="w-full max-w-md bg-[#1F1D2B] text-gray-200 border border-[#262837] rounded-xl px-4 py-2 outline-none
+                   focus:border-[#ec7c6a] transition-all mx-auto"
+                    value={categoriaSeleccionada2}
+                    onChange={(e) => handleSelect(e, 'cat2')}
+                    required
+                >
+                    {categorias.map((categoria) => (
+                        <option key={categoria} value={categoria}>
+                            {categoria.charAt(0).toUpperCase() + categoria.slice(1)}
+                        </option>
+                    ))}
+              </select>
             </div>
 
             {/* Descripción */}

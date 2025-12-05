@@ -91,7 +91,7 @@ const AdminPage = () => {
         <div className="bg-[#1F1D2B] p-4 rounded-2xl shadow-md">
           <p className="text-sm text-gray-400">Categorías</p>
           <p className="text-2xl font-semibold text-white">
-            {Array.from(new Set(productos.map(p => p.category).filter(Boolean))).length}
+            {categorias.length}
           </p>
         </div>
       </section>
@@ -155,7 +155,7 @@ const AdminPage = () => {
                     <td className="px-4 py-4 align-top text-sm text-[#ec7c6a] font-semibold">${p.price}</td>
 
                     <td className="px-4 py-4 align-top text-sm text-gray-300 hidden md:table-cell">
-                      {p.category.join(" - ") || "-"}
+                      {p.category.join(" - ")|| "-"}
                     </td>
 
                     <td className="px-4 py-4 align-top">
