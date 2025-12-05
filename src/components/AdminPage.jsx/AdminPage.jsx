@@ -13,6 +13,9 @@ const AdminPage = () => {
   const [productoSeleccionado, setProductoSeleccionado] = useState(null)
   const [modoFormulario, setModoFormulario] = useState('agregar')
   const [nombreBusqueda, setNombreBusqueda] = useState('')
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todas')
+
+  const categorias = ["Todas", "Selecciones", "Europa", "Sudamerica", "Liga argentina", "Brasileirao", "Serie A", "La liga", "Ligue one"]
   
   useEffect(() => {
         getAllProducts()
@@ -35,11 +38,15 @@ const AdminPage = () => {
       setProductoSeleccionado(null)
     }
 
-    const productosFiltrados = productos.filter((p) =>{
-      return p.title.toLowerCase().includes(nombreBusqueda.toLowerCase())
+    const productosFiltradosPorNombre = productos.filter((p) => {
+        return p.title.toLowerCase().includes(nombreBusqueda.toLowerCase())
     })
 
-    const productosAMostrar = nombreBusqueda.trim() === '' ? productos: productosFiltrados
+    const productosFiltradosPorCategoria = productosFiltradosPorNombre.filter(p =>
+        categoriaSeleccionada.toLowerCase() === 'todas' ? true : p.category.some(cat => cat.toLowerCase() === categoriaSeleccionada.toLowerCase())
+    )   
+
+    const productosAMostrar = productosFiltradosPorCategoria
 
     const meta = {
       title: "Panel de administración| Mi tienda",
@@ -94,6 +101,20 @@ const AdminPage = () => {
           <div className="mb-8 flex justify-center">
             <input type="text" placeholder="Buscar productos..." value={nombreBusqueda} onChange={(e) => setNombreBusqueda(e.target.value)} className="w-full max-w-md bg-[#1F1D2B] text-gray-200 placeholder-gray-500 border border-[#262837] focus:border-[#ec7c6a] outline-none rounded-xl px-4 py-2 transition-all duration-200 shadow-md"/>
           </div>
+          <div className="mb-8 flex justify-center">
+                <select
+                    className="w-full max-w-md bg-[#1F1D2B] text-gray-200 border border-[#262837] rounded-xl px-4 py-2 outline-none
+                   focus:border-[#ec7c6a] transition-all mx-auto"
+                    value={categoriaSeleccionada}
+                    onChange={(e) => setCategoriaSeleccionada(e.target.value)}
+                >
+                    {categorias.map((categoria) => (
+                        <option key={categoria} value={categoria}>
+                            {categoria.charAt(0).toUpperCase() + categoria.slice(1)}
+                        </option>
+                    ))}
+              </select>
+          </div> 
           <table className="min-w-full bg-transparent">
             <thead>
               <tr className="text-left text-sm text-gray-400">
@@ -134,7 +155,7 @@ const AdminPage = () => {
                     <td className="px-4 py-4 align-top text-sm text-[#ec7c6a] font-semibold">${p.price}</td>
 
                     <td className="px-4 py-4 align-top text-sm text-gray-300 hidden md:table-cell">
-                      {p.category || "-"}
+                      {p.category.join(" - ") || "-"}
                     </td>
 
                     <td className="px-4 py-4 align-top">
