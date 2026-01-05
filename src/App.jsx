@@ -21,7 +21,7 @@ function App() {
     <div className='bg-[#262837] w-full min-h-screen'>
       <Header />
       <Routes>
-        <Route path='/' element={<RutaProtegida> <Index /> </RutaProtegida>}/>
+        <Route path='/' element={<Index />}/>
         <Route path='/contacto' element={<RutaProtegida> <Contacto /> </RutaProtegida>}/>
         <Route path='/producto/:id' element={<RutaProtegida> <DetalleProducto /> </RutaProtegida>}/>
         <Route path='/carrito' element={<RutaProtegida> <Carrito /> </RutaProtegida>}/>

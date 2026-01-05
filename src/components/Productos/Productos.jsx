@@ -62,6 +62,7 @@ const Productos = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center sm:place-items-stretch">
                 {productosAMostrar.map((producto) => (
+                    <Link to={`/producto/${producto.id}`}> 
                     <div
                         key={producto.id}
                         className="bg-[#1F1D2B] rounded-2xl p-4 shadow-lg hover:shadow-[#ec7c6a]/40 transition-all duration-300
@@ -76,13 +77,6 @@ const Productos = () => {
                             <p className="text-gray-400 text-sm mb-2 line-clamp-2">{producto.description}</p>
                             <p className="text-[#ec7c6a] font-bold mb-4">${producto.price}</p>
 
-                            <Link
-                                to={`/producto/${producto.id}`}
-                                className="block bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-semibold py-2 px-4 rounded-xl transition-colors duration-200 text-center"
-                            >
-                                Ver más detalles
-                            </Link>
-
                             <button
                                 className="mt-4 w-full bg-[#ec7c6a] hover:bg-[#d86b5a] text-white font-semibold py-2 rounded-xl transition-colors"
                                 onClick={() => agregarCarrito(producto)}
@@ -91,6 +85,7 @@ const Productos = () => {
                             </button>
                         </div>
                     </div>
+                    </Link>
                 ))}
             </div>
         </div>
