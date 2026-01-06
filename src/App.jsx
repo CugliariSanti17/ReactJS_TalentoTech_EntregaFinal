@@ -14,6 +14,7 @@ import Carrito from './components/Carrito/Carrito.jsx'
 import AdminPage from './components/AdminPage.jsx/AdminPage.jsx'
 import RutaProtegida from './components/RutaProtegida/RutaProtegida.jsx'
 import RutaProtegidaAdmin from './components/RutaProtegidaAdmin/RutaProtegidaAdmin.jsx'
+import Checkout from './components/Checkout/Checkout.jsx'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/producto/:id' element={<RutaProtegida> <DetalleProducto /> </RutaProtegida>}/>
         <Route path='/carrito' element={<RutaProtegida> <Carrito /> </RutaProtegida>}/>
         <Route path='/nosotros' element={<RutaProtegida>  <Nosotros /> </RutaProtegida> }/>
+        <Route path='/checkout' element={<RutaProtegida> <Checkout /> </RutaProtegida>}/>
         <Route path='/signin' element={<Signin />}/>
         <Route path='/admin' element={<RutaProtegidaAdmin> <AdminPage /> </RutaProtegidaAdmin>} />
       </Routes>

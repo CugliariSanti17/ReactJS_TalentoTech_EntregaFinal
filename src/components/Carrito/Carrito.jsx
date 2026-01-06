@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { CarritoContext } from "../../context/CarritoContext.jsx"
 import Meta from 'react-document-meta'
 import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
 
 const Carrito = () => {
     const { carrito, eliminarCarrito, vaciarCarrito, actualizarCantidad } = useContext(CarritoContext)
@@ -159,13 +160,13 @@ const Carrito = () => {
                                 </p>
                             </div>
 
-                            <button
-                                onClick={() => simularCheckout()}
+                            <Link
                                 className="mt-6 w-full bg-[#ec7c6a] hover:bg-[#d86b5a] 
                        text-white font-semibold py-3 rounded-xl transition-colors"
+                                to={"/checkout"}
                             >
                                 Confirmar compra
-                            </button>
+                            </Link>
                         </div>
                     </div>
 
