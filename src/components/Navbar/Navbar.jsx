@@ -80,7 +80,7 @@ const Navbar = () => {
           )}
 
           {user && (
-            <li className="p-4 transition-colors mt-auto cursor-pointer" onClick={logout} >
+            <li className="p-4 transition-colors mt-auto cursor-pointer" onClick={logout}>
               <div className="p-4 flex justify-center rounded-xl text-xl text-[#ec7c6a] hover:bg-[#262837] hover:text-white">
                 <CiLogout />
               </div>
