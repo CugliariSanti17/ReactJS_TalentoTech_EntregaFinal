@@ -5,10 +5,11 @@ import { IoCartOutline } from "react-icons/io5";
 import { FiUsers } from "react-icons/fi";
 import { CiLogout } from 'react-icons/ci';
 import { RiAdminLine } from "react-icons/ri";
+import { PiSignIn } from "react-icons/pi";
 import { useContext } from 'react';
 import { CarritoContext } from '../../context/CarritoContext.jsx';
 import { AuthContext } from '../../context/AuthContext.jsx';
-import { LiaBuyNLarge } from 'react-icons/lia';
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -17,6 +18,7 @@ const Navbar = () => {
   const {logout, user} = useContext(AuthContext)
 
   const esAdmin = user === 'admin'
+
 
   const links = [
     { to: "/", icon: <FaHome /> },
@@ -66,14 +68,24 @@ const Navbar = () => {
             </li>
           ))}
 
-          <li
-            className="p-4 transition-colors mt-auto cursor-pointer"
-            onClick={logout}
-          >
-            <div className="p-4 flex justify-center rounded-xl text-xl text-[#ec7c6a] hover:bg-[#262837] hover:text-white">
-              <CiLogout />
-            </div>
-          </li>
+          {!user && (
+            <li className='p-4 transition-colors mt-auto cursor-pointer'>
+              <Link
+                to={'/signin'}
+                className="p-4 flex justify-center rounded-xl text-xl text-[#ec7c6a] hover:bg-[#262837] hover:text-white"
+              >
+                <PiSignIn />
+              </Link>
+            </li>
+          )}
+
+          {user && (
+            <li className="p-4 transition-colors mt-auto cursor-pointer" onClick={logout} >
+              <div className="p-4 flex justify-center rounded-xl text-xl text-[#ec7c6a] hover:bg-[#262837] hover:text-white">
+                <CiLogout />
+              </div>
+            </li>
+          )}
         </ul>
       </nav>
 

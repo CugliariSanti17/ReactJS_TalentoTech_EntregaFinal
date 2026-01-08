@@ -1,11 +1,13 @@
 import { useState, useContext } from "react"
 import { CarritoContext } from "../../context/CarritoContext.jsx"
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 const Checkout = () => {
 
   const { carrito, vaciarCarrito } = useContext(CarritoContext)
+
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     nombre: "",
@@ -49,7 +51,7 @@ const Checkout = () => {
       try {
       // - enviar al backend
       vaciarCarrito()
-      Navigate('/checkout/succes')
+      navigate("/checkout/succes")
       } catch (error) {
           Swal.fire({
             title: "Error al realizar la compra",
